@@ -1,0 +1,16 @@
+{
+  "name": "Frioestrella SIA — Gaisa kondicionieri",
+  "short_name": "Frioestrella",
+  "description": "Gaisa kondicionieru uzstādīšana, apkope un remonts Latvijā un Spānijā.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0B3D91",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
