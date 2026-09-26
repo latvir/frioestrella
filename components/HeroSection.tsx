@@ -12,7 +12,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://mgx-backend-cdn.metadl.com/generate/images/1002238/2026-03-04/aa6aee94-e453-41c2-86e3-3931ee90abab.png"
+          src="/images/frioestrella-hero.png"
           alt={t("hero.imageAlt")}
           className="w-full h-full object-cover"
         />
@@ -51,6 +51,7 @@ export default function HeroSection() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
+
             <Button
               asChild
               size="lg"
@@ -74,6 +75,7 @@ export default function HeroSection() {
                 </p>
               </div>
             </div>
+
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
               <Clock className="w-8 h-8 text-[#00B4D8] flex-shrink-0" />
               <div>
@@ -83,6 +85,7 @@ export default function HeroSection() {
                 <p className="text-white/60 text-xs">{t("hero.fastDesc")}</p>
               </div>
             </div>
+
             <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-xl p-3">
               <Award className="w-8 h-8 text-[#00B4D8] flex-shrink-0" />
               <div>

@@ -29,11 +29,12 @@ export default function AboutSection() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="https://mgx-backend-cdn.metadl.com/generate/images/1002238/2026-03-04/1c3ae505-8938-4bea-9500-745a7fd40da4.png"
+                src="/images/frioestrella-about.png"
                 alt={t("about.imageAlt")}
                 className="w-full h-[400px] lg:h-[500px] object-cover"
               />
             </div>
+
             {/* Floating stat card */}
             <div className="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl p-6 border border-slate-100">
               <div className="text-center">
@@ -50,10 +51,12 @@ export default function AboutSection() {
             <span className="inline-block text-sm font-bold text-[#00B4D8] uppercase tracking-widest mb-3">
               {t("about.label")}
             </span>
+
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0F172A] mb-6 leading-tight">
               {t("about.title1")}
               <span className="text-[#0B3D91]">{t("about.title2")}</span>
             </h2>
+
             <p className="text-slate-500 text-lg leading-relaxed mb-8">
               {t("about.description")}
             </p>
@@ -74,15 +77,18 @@ export default function AboutSection() {
             <div className="grid grid-cols-3 gap-4">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
+
                 return (
                   <div
                     key={index}
                     className="text-center p-4 rounded-xl bg-[#F8FAFC] border border-slate-100"
                   >
                     <Icon className="w-6 h-6 text-[#0B3D91] mx-auto mb-2" />
+
                     <p className="text-2xl font-extrabold text-[#0F172A]">
                       {stat.value}
                     </p>
+
                     <p className="text-xs font-medium text-slate-500 mt-1">
                       {stat.label}
                     </p>

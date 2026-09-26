@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 
+const SITE_URL = "https://frioestrella.com";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "https://frioestrella.lv";
   return [
     {
-      url: site,
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,

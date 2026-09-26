@@ -1,9 +1,13 @@
 import type { MetadataRoute } from "next";
 
+const SITE_URL = "https://frioestrella.com";
+
 export default function robots(): MetadataRoute.Robots {
-  const site = process.env.NEXT_PUBLIC_SITE_URL || "https://frioestrella.lv";
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${site}/sitemap.xml`,
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

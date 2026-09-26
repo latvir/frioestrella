@@ -19,15 +19,13 @@ export default function ServicesSection() {
       icon: Wrench,
       title: t("services.installation"),
       description: t("services.installationDesc"),
-      image:
-        "https://mgx-backend-cdn.metadl.com/generate/images/1002238/2026-03-04/7ea6d8c4-2bc7-4506-8506-d117c59405b2.png",
+      image: "/images/installation-service.png",
     },
     {
       icon: Settings,
       title: t("services.maintenance"),
       description: t("services.maintenanceDesc"),
-      image:
-        "https://mgx-backend-cdn.metadl.com/generate/images/1002238/2026-03-04/e3730319-72fd-4df9-af5a-6c7e753303a7.png",
+      image: "/images/maintenance-service.png",
     },
     {
       icon: ThermometerSun,
@@ -59,9 +57,11 @@ export default function ServicesSection() {
           <span className="inline-block text-sm font-bold text-[#00B4D8] uppercase tracking-widest mb-3">
             {t("services.label")}
           </span>
+
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] mb-4">
             {t("services.title")}
           </h2>
+
           <p className="text-lg text-slate-500 leading-relaxed">
             {t("services.subtitle")}
           </p>
@@ -71,6 +71,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const Icon = service.icon;
+
             return (
               <Card
                 key={index}
@@ -85,13 +86,16 @@ export default function ServicesSection() {
                     />
                   </div>
                 )}
+
                 <CardContent className="p-6">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0B3D91] to-[#00B4D8] flex items-center justify-center mb-4 shadow-md group-hover:shadow-lg transition-shadow">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
+
                   <h3 className="text-xl font-bold text-[#0F172A] mb-2">
                     {service.title}
                   </h3>
+
                   <p className="text-slate-500 leading-relaxed text-sm">
                     {service.description}
                   </p>
