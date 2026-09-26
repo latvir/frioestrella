@@ -1,4 +1,8 @@
 import { NextResponse } from "next/server";
+import {
+  isEmailJsConfigured,
+  sendEmailJsEmail,
+} from "@/lib/emailjs";
 
 type ContactPayload = {
   name?: string;
@@ -10,49 +14,46 @@ type ContactPayload = {
 export async function POST(request: Request) {
   try {
     const data = (await request.json()) as ContactPayload;
+
     const name = data.name?.trim();
     const phone = data.phone?.trim();
     const email = data.email?.trim() || "";
     const message = data.message?.trim();
 
     if (!name || !phone || !message) {
-      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Missing required fields." },
+        { status: 400 }
+      );
     }
 
-    const webhook = process.env.CONTACT_WEBHOOK_URL;
-    if (!webhook) {
+    if (!isEmailJsConfigured()) {
       return NextResponse.json(
         { error: "Contact form is not configured yet." },
         { status: 503 }
       );
     }
 
-    const response = await fetch(webhook, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(process.env.CONTACT_WEBHOOK_SECRET
-          ? { Authorization: `Bearer ${process.env.CONTACT_WEBHOOK_SECRET}` }
-          : {}),
-      },
-      body: JSON.stringify({
-        source: "frioestrella-contact-form",
-        name,
-        phone,
-        email,
-        message,
-        createdAt: new Date().toISOString(),
-      }),
-      cache: "no-store",
-    });
+    const contactInfo = [
+      `Vārds: ${name}`,
+      `Telefons: ${phone}`,
+      `E-pasts: ${email || "Nav norādīts"}`,
+    ].join("\n");
 
-    if (!response.ok) {
-      return NextResponse.json({ error: "Message delivery failed." }, { status: 502 });
-    }
+    await sendEmailJsEmail({
+      source: "Kontaktforma",
+      contact_info: contactInfo,
+      content_title: "Ziņojums",
+      content: message,
+    });
 
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Contact route error", error);
-    return NextResponse.json({ error: "Could not send message." }, { status: 500 });
+    console.error("Contact form error:", error);
+
+    return NextResponse.json(
+      { error: "Could not send message." },
+      { status: 500 }
+    );
   }
 }
